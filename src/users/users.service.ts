@@ -11,6 +11,7 @@ export class UsersService {
   ) {}
 
   async create(dto: CreateUserDto) {
+    console.log('🚀 ~ UsersService ~ create ~ dto:', dto);
     const { email, password } = dto;
 
     if (!email || !password) {
@@ -22,6 +23,7 @@ export class UsersService {
         email,
       },
     });
+    console.log('🚀 ~ UsersService ~ create ~ isEmailUsed:', isEmailUsed);
 
     if (isEmailUsed) {
       throw new BadRequestException('Email is already used');
